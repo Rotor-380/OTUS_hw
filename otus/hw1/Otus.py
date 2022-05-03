@@ -8,13 +8,15 @@ from numpy.linalg import norm
 Напишите функцию, которая принимает на вход параметры 𝑁 и 𝐾 и возвращает два числа:
 𝑥 - cколько кусков эльфиского хлеба достанется каждому хоббиту, и 𝑦 - сколько кусков остаётся в корзинке.
 '''
+
+
 def share_bread(N, K):
     x = K // N
     y = K % N
     return x, y
 
-assert share_bread(N=3, K=14) == (4, 2)
 
+assert share_bread(N=3, K=14) == (4, 2)
 
 '''
 Задача 2
@@ -35,7 +37,7 @@ def leap_year(year):
 
 
 assert leap_year(5) == 'YOU SHALL NOT PASS'
-print(leap_year(5))
+# print(leap_year(5))
 
 '''
 Задача 3
@@ -49,7 +51,7 @@ def amulet_area(a, b, c):
 
 
 assert amulet_area(3, 4, 5) == 6
-print(amulet_area(3, 4, 5))
+# print(amulet_area(3, 4, 5))
 
 '''
 =========================================================================================================
@@ -60,27 +62,30 @@ print(amulet_area(3, 4, 5))
 Важное условие - используйте только базовые функции numpy для решения.
 '''
 
-def cal_euclidean(a, b):    # Евклидово расстояние (базовые функции numpy)
 
-    distance = (np.sum((a-b)**2))**0.5
+def cal_euclidean(a, b):  # Евклидово расстояние (базовые функции numpy)
+
+    distance = (np.sum((a - b) ** 2)) ** 0.5
     return distance
 
 
 def cal_manhattan(a, b):  # Расстояние Манхэттена (базовые функции numpy)
-    distance = np.sum(np.abs(a-b))
+    distance = np.sum(np.abs(a - b))
     return distance
+
+
 #
 #
-def cal_cosine(a, b):   # Косинусное расстояние (базовые функции numpy)
-    distance = 1 - ( (np.dot(a, b))/(norm(a) * norm(b)) )
+def cal_cosine(a, b):  # Косинусное расстояние (базовые функции numpy)
+    distance = 1 - ((np.dot(a, b)) / (norm(a) * norm(b)))
     return distance
 
 
 a = np.random.randint(-10, 10, size=10)
 b = np.random.randint(-10, 10, size=10)
-print(cal_euclidean(a, b))
-print(cal_manhattan(a, b))
-print(cal_cosine(a, b))
+# print(cal_euclidean(a, b))
+# print(cal_manhattan(a, b))
+# print(cal_cosine(a, b))
 
 '''
 Задача 5
@@ -96,8 +101,8 @@ print(cal_cosine(a, b))
 my_array = np.random.rand(100)
 my_array[-1] = 1
 my_array[0] = 0
-print(np.max(my_array), np.min(my_array))
-print(my_array)
+# print(np.max(my_array), np.min(my_array))
+# print(my_array)
 
 '''
 Создайте array размером 5×6
@@ -111,22 +116,22 @@ my_array.resize(5, 6, refcheck=False)
 lin = my_array.transpose()
 for row in lin:
     if y in row:
-        selected_column = (row.reshape(5,1))
-print('Shape: ',my_array.shape)
-print('Array')
-print(my_array)
-print(selected_column)
+        selected_column = (row.reshape(5, 1))
+# print('Shape: ',my_array.shape)
+# print('Array')
+# print(my_array)
+# print(selected_column)
 
 
 '''
 Напишите функцию, которая принимает на вохд матрицу (array) X и возвращает все её уникальные строки в виде новой матрицы.
 '''
 
-# def get_unique_rows(X):
-#     # Your code here
-#     return X_unique
-#
-# X = np.random.randint(4, 6, size=(10,3))
-# print(X)
-# # get_unique_rows(X)
 
+def get_unique_rows(X):
+    X_unique = np.unique(X, axis=0)
+    return X_unique
+
+
+X = np.random.randint(4, 6, size=(10, 3))
+print(get_unique_rows(X))
